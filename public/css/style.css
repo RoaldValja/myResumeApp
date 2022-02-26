@@ -21,6 +21,7 @@ body {
     display: grid;
     grid-template-columns:5% 22.5% 22.5% 22.5% 22.5% 5%;
     width: 100%;
+    margin-bottom: 50px;
 }
 
 #image-box{
@@ -319,4 +320,8 @@ ul {
 
 .homePage {
     background-color: mintcream;
+}
+
+#name-h1 {
+    text-align: left;
 }
