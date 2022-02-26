@@ -1,0 +1,322 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+.row-1 {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+    height: 400px;
+    background-color: #f4f4f4;
+}
+
+.row-2 {
+    display: grid;
+    grid-template-columns:5% 45% 45% 5%;
+    width: 100%;
+    background-color: snow;
+}
+
+.row-3 {
+    display: grid;
+    grid-template-columns:5% 22.5% 22.5% 22.5% 22.5% 5%;
+    width: 100%;
+}
+
+#image-box{
+    text-align: center;
+}
+
+#profile-picture{
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    margin-top: 50px;
+    border: 1px solid black;
+}
+
+#personal-info{
+    text-align: left;
+    margin-top: 100px;
+}
+
+.row-2 h1 {
+    text-align: center;
+}
+
+.short-form-grid {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.long-form-grid.top-row {
+    display: grid;
+    grid-template-columns: 5% 30% 50% 15%;
+    width: 100%;
+}
+
+.long-form-grid input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.edit-forms h1 {
+    text-align: center;
+}
+
+.long-form-grid label {
+    font-weight: bold;
+    display: block;
+}
+
+.errorMessage {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.school-grid {
+    display: grid;
+    grid-template-columns: 5% 40% 30% 20% 5%;
+    width: 100%;
+}
+
+.school-grid input {
+    width: 90%;
+}
+
+.school-grid button {
+    height: 100%;
+}
+
+button.edit {
+    border: 2px solid black;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin: 0;
+    color: black;
+}
+
+button.login {
+    height: 40px;
+    width: 100px;
+    margin-bottom: 200px;
+}
+
+input.login {
+    margin-bottom: 10px;
+}
+
+button.green {
+    background-color: #2ae85d;
+}
+button.green:hover {
+    background-color: #87e8a1;
+}
+
+button.red {
+    background-color: #e31e1e;
+}
+button.red:hover {
+    background-color: #e86d6d;
+}
+
+.school-grid button.gray {
+    width: 50%;
+}
+
+button.gray {
+    background-color: gray;
+}
+
+button.gray:hover {
+    background-color: lightgrey;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.hr-fat {
+    border: none;
+    height: 3px;
+    background-color: black;
+}
+
+.personal-grid {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    width: 100%;
+}
+.personal-grid input {
+    width: 90%;
+}
+.personal-grid button {
+    width: 100%;
+}
+
+.form-div {
+    border: 1px dotted black;
+}
+
+#edit {
+    background-color: beige;
+}
+
+#schools {
+    background-color: blanchedalmond;
+}
+
+.personal-grid button {
+    height: 50px;
+    margin-top: 10px;
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.long-form-grid.middle-row {
+    display: grid;
+    grid-template-columns: 5% 22.5% 22.5% 22.5% 22.5% 5%;
+    width: 100%;
+}
+
+#programming {
+    background-color: cornsilk;
+    padding-bottom: 10px;
+}
+
+#back-end {
+    background-color: honeydew;
+    padding-bottom: 10px;
+}
+
+#front-end {
+    background-color: ivory;
+    padding-bottom: 10px;
+}
+
+#version-control {
+    background-color: lightcyan;
+    padding-bottom: 10px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 2% 48% 48% 2%;
+    width: 100%;
+}
+
+.skills-grid input {
+    width: 90%;
+}
+
+.skills-grid button {
+    height: 100%;
+}
+.skills-grid button.gray {
+    width: 50%;
+}
+
+
+.long-form-grid.bottom-row {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.long-form-grid.title-row {
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+    width: 100%;
+}
+
+#technical-title {
+    background-color: lightgrey;
+}
+
+#soft-skills {
+    background-color: linen;
+    padding-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 90% 5% 5%;
+    width: 100%;
+    background-color: cornflowerblue;
+}
+
+.menu {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    background-color: darkblue;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 9px;
+    border: 1px solid black;
+}
+
+.menu:hover {
+    cursor: pointer;
+}
+
+.menu:hover #navigation {
+    display: block;
+}
+
+
+#navigation{
+    position: absolute;
+    top: 38px;
+    display: none;
+}
+
+#navigation li{
+    width: 100%;
+    background-color: lightblue;
+    height: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#navigation li:hover{
+    opacity: 0.3;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#navigation ul{
+    margin: 0;
+    padding: 0;
+    border: 2px solid black;
+}
+
+#navigation a{
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.homePage h1{
+    text-align: center;
+}
+
+.homePage {
+    background-color: mintcream;
+}

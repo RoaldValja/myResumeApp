@@ -1,0 +1,321 @@
+<%- include('partials/header') %>
+    <div class="edit-forms">
+        <%- include('partials/navigation')%>
+        <div class="long-form-grid top-row">
+            <div></div>
+            <div id="edit" class="form-div">
+                <h1>Edit Personal Information</h1>
+                <form action="/updatePersonal" method="post" enctype="multipart/form-data">
+                    <div class="personal-grid">
+                        <div></div>
+                        <div>
+                            <div class="form-group">
+                                <label for="firstname">First name</label>
+                                <input type="text" class="form-control" name="firstname" value="<%- personalInfo[0].firstname %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Last name</label>
+                                <input type="text" class="form-control" name="lastname" value="<%- personalInfo[0].lastname %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of birth</label>
+                                <input type="date" class="form-control" name="dateOfBirth" value="<%- personalInfo[0].dateOfBirth %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" name="country" value="<%- personalInfo[0].country %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" name="city" value="<%- personalInfo[0].city %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userFile">Profile picture</label>
+                                <input type="file" class="form-control" name="userFile" required>
+                            </div>
+                            
+                            <button type="submit" class="gray edit">Save</button>
+                        </div>
+                        <div></div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-div" id="schools">
+                <h1>List of Graduated Schools</h1>
+                <div class="schoolList">
+                    <% for(let i = 0; i < schoolList.length; i++) { %>
+                        <form action="/editSchool" method="post">
+                            <div class="school-grid">
+                                <div></div>
+                                <div>
+                                    <input type="hidden" name="schoolId" value="<%- schoolList[i].id %>">
+                                    <label for="schoolName">School name</label>
+                                    <input type="text" name="schoolName" value="<%- schoolList[i].schoolName %>" required>
+                                </div>
+                                <div>
+                                    <label for="schoolGraduationDate">School graduation date</label>
+                                    <input type="date" name="schoolGraduationDate" value="<%- schoolList[i].schoolGraduationDate %>" required>
+                                </div>
+                                <div>
+                                    <button class="green edit" type="submit" value="update" name="schoolCheckbox">Update</button>
+                                    <button class="red edit" type="submit" value="delete" name="schoolCheckbox">Remove</button>
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
+                        <% if(i+1 != schoolList.length){ %>
+                            <hr>
+                        <% } %>
+                    <% } %>
+                </div>
+                <hr class="hr-fat">
+                <div class="newSchool">
+                    <form action="/newSchool" method="post">
+                        <div class="school-grid">
+                            <div></div>
+                            <div>
+                                <label for="newSchoolName">School name</label>
+                                <input type="text" id="newSchoolName" name="newSchoolName" placeholder="School name" onkeyup="validate()" required>
+                                <br>
+                                <span id="errorMessageName" class="errorMessage"></span>
+                            </div>
+                            <div>
+                                <label for="newSchoolGraduationDate">School graduation date</label>
+                                <input type="date" id="newSchoolGraduationDate" name="newSchoolGraduationDate" onchange="validate()" required>
+                                <br>
+                                <span id="errorMessageDate" class="errorMessage"></span>
+                            </div>
+                            <div>
+                                <button class="gray edit" type="submit" id="newSchoolSubmit" disabled>Add</button>
+                            </div>
+                            <div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+        <div class="long-form-grid title-row">
+            <div></div>
+            <div class="form-div" id="technical-title">
+                <h1>Technical Skills</h1>
+            </div>
+            <div></div>
+        </div>
+        <div class="long-form-grid middle-row">
+            <div></div>
+            <div class="form-div" id="programming">
+                <h1>Programming</h1>
+                <div class="programmingSkillsList">
+                    <% for(let i = 0; i < programmingSkillsList.length; i++) { %>
+                        <form action="/editProgrammingSkill" method="post">
+                            <div class="skills-grid">
+                                <div></div>
+                                <div>
+                                    <input type="hidden" name="programmingSkillId" value="<%- programmingSkillsList[i].id %>">
+                                    <label for="programmingSkillName">Name</label>
+                                    <input type="text" name="programmingSkillName" value="<%- programmingSkillsList[i].skillName %>" required>
+                                </div>
+                                <div>
+                                    <button class="green edit" type="submit" value="update" name="programmingSkillCheckbox">Update</button>
+                                    <button class="red edit" type="submit" value="delete" name="programmingSkillCheckbox">Remove</button>
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
+                        <% if(i+1 != programmingSkillsList.length){ %>
+                            <hr>
+                        <% } %>
+                    <% } %>
+                </div>
+                <hr class="hr-fat">
+                <div class="newProgrammingSkill">
+                    <form action="/newProgrammingSkill" method="post">
+                        <div class="skills-grid">
+                            <div></div>
+                            <div>
+                                <label for="newProgrammingSkillName">Name</label>
+                                <input type="text" id="newProgrammingSkillName" name="newProgrammingSkillName" placeholder="Skill name" required>
+                            </div>
+                            <div>
+                                <button class="gray edit" type="submit" id="newProgrammingSkillSubmit">Add</button>
+                            </div>
+                            <div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="form-div" id="back-end">
+                <h1>Back-end</h1>
+                <div class="backendSkillsList">
+                    <% for(let i = 0; i < backendSkillsList.length; i++) { %>
+                        <form action="/editBackendSkill" method="post">
+                            <div class="skills-grid">
+                                <div></div>
+                                <div>
+                                    <input type="hidden" name="backendSkillId" value="<%- backendSkillsList[i].id %>">
+                                    <label for="backendSkillName">Name</label>
+                                    <input type="text" name="backendSkillName" value="<%- backendSkillsList[i].skillName %>" required>
+                                </div>
+                                <div>
+                                    <button class="green edit" type="submit" value="update" name="backendSkillCheckbox">Update</button>
+                                    <button class="red edit" type="submit" value="delete" name="backendSkillCheckbox">Remove</button>
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
+                        <% if(i+1 != backendSkillsList.length){ %>
+                            <hr>
+                        <% } %>
+                    <% } %>
+                </div>
+                <hr class="hr-fat">
+                <div class="newBackendSkill">
+                    <form action="/newBackendSkill" method="post">
+                        <div class="skills-grid">
+                            <div></div>
+                            <div>
+                                <label for="newBackendSkillName">Name</label>
+                                <input type="text" id="newBackendSkillName" name="newBackendSkillName" placeholder="Skill name" required>
+                            </div>
+                            <div>
+                                <button class="gray edit" type="submit" id="newBackendSkillSubmit">Add</button>
+                            </div>
+                            <div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="form-div" id="front-end">
+                <h1>Front-end</h1>
+                <div class="frontendSkillsList">
+                    <% for(let i = 0; i < frontendSkillsList.length; i++) { %>
+                        <form action="/editFrontendSkill" method="post">
+                            <div class="skills-grid">
+                                <div></div>
+                                <div>
+                                    <input type="hidden" name="frontendSkillId" value="<%- frontendSkillsList[i].id %>">
+                                    <label for="frontendSkillName">Name</label>
+                                    <input type="text" name="frontendSkillName" value="<%- frontendSkillsList[i].skillName %>" required>
+                                </div>
+                                <div>
+                                    <button class="green edit" type="submit" value="update" name="frontendSkillCheckbox">Update</button>
+                                    <button class="red edit" type="submit" value="delete" name="frontendSkillCheckbox">Remove</button>
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
+                        <% if(i+1 != frontendSkillsList.length){ %>
+                            <hr>
+                        <% } %>
+                    <% } %>
+                </div>
+                <hr class="hr-fat">
+                <div class="newFrontendSkill">
+                    <form action="/newFrontendSkill" method="post">
+                        <div class="skills-grid">
+                            <div></div>
+                            <div>
+                                <label for="newFrontendSkillName">Name</label>
+                                <input type="text" id="newFrontendSkillName" name="newFrontendSkillName" placeholder="Skill name" required>
+                            </div>
+                            <div>
+                                <button class="gray edit" type="submit" id="newFrontendSkillSubmit">Add</button>
+                            </div>
+                            <div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="form-div" id="version-control">
+                <h1>Version control</h1>
+                <div class="versionControlSkillsList">
+                    <% for(let i = 0; i < versionControlSkillsList.length; i++) { %>
+                        <form action="/editVersionControlSkill" method="post">
+                            <div class="skills-grid">
+                                <div></div>
+                                <div>
+                                    <input type="hidden" name="versionControlSkillId" value="<%- versionControlSkillsList[i].id %>">
+                                    <label for="versionControlSkillName">Name</label>
+                                    <input type="text" name="versionControlSkillName" value="<%- versionControlSkillsList[i].skillName %>" required>
+                                </div>
+                                <div>
+                                    <button class="green edit" type="submit" value="update" name="versionControlSkillCheckbox">Update</button>
+                                    <button class="red edit" type="submit" value="delete" name="versionControlSkillCheckbox">Remove</button>
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
+                        <% if(i+1 != versionControlSkillsList.length){ %>
+                            <hr>
+                        <% } %>
+                    <% } %>
+                </div>
+                <hr class="hr-fat">
+                <div class="newVersionControlSkill">
+                    <form action="/newVersionControlSkill" method="post">
+                        <div class="skills-grid">
+                            <div></div>
+                            <div>
+                                <label for="newVersionControlSkillName">Name</label>
+                                <input type="text" id="newVersionControlSkillName" name="newVersionControlSkillName" placeholder="Skill name" required>
+                            </div>
+                            <div>
+                                <button class="gray edit" type="submit" id="newVersionControlSkillSubmit">Add</button>
+                            </div>
+                            <div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div></div>
+        </div>
+        <div class="long-form-grid bottom-row">
+            <div></div>
+            <div class="form-div" id="soft-skills">
+                <h1>Soft Skills</h1>
+                <div class="softSkillsList">
+                    <% for(let i = 0; i < softSkillsList.length; i++) { %>
+                        <form action="/editSoftSkill" method="post">
+                            <div class="skills-grid">
+                                <div></div>
+                                <div>
+                                    <input type="hidden" name="softSkillId" value="<%- softSkillsList[i].id %>">
+                                    <label for="softSkillName">Name</label>
+                                    <input type="text" name="softSkillName" value="<%- softSkillsList[i].skillName %>" required>
+                                </div>
+                                <div>
+                                    <button class="green edit" type="submit" value="update" name="softSkillCheckbox">Update</button>
+                                    <button class="red edit" type="submit" value="delete" name="softSkillCheckbox">Remove</button>
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
+                        <% if(i+1 != softSkillsList.length){ %>
+                            <hr>
+                        <% } %>
+                    <% } %>
+                </div>
+                <hr class="hr-fat">
+                <div class="newSoftSkill">
+                    <form action="/newSoftSkill" method="post">
+                        <div class="skills-grid">
+                            <div></div>
+                            <div>
+                                <label for="newSoftSkillName">Name</label>
+                                <input type="text" id="newSoftSkillName" name="newSoftSkillName" placeholder="Skill name" required>
+                            </div>
+                            <div>
+                                <button class="gray edit" type="submit" id="newSoftSkillSubmit">Add</button>
+                            </div>
+                            <div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+<%- include('partials/footer') %>

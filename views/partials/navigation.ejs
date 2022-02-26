@@ -1,0 +1,21 @@
+<div class="menu-grid">
+    <div></div>
+    <div>
+        <div class="menu">
+            <span>NAV</span>
+            <div id="navigation" class="nav-show">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/admin">Edit</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <% if(loggedIn){ %>
+                        <li><a href="/logout">Log out</a></li>
+                    <% } else { %>
+                        <li><a href="/login">Log in</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div></div>
+</div>
